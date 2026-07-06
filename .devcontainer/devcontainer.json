@@ -1,0 +1,13 @@
+{
+  "name": "Go Agy IDE Codespace",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "postStartCommand": "bash .devcontainer/setup.sh",
+  "portsAttributes": {
+    "8090": {
+      "label": "Mobile IDE Server",
+      "onAutoForward": "silent",
+      "visibility": "public"
+    }
+  },
+  "forwardPorts": [8090]
+}
