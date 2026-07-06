@@ -1,6 +1,6 @@
 {
   "name": "Go Agy IDE Codespace",
-  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
   "postStartCommand": "bash .devcontainer/setup.sh",
   "portsAttributes": {
     "8090": {
