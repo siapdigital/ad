@@ -18,11 +18,15 @@ sudo chmod 777 "$STORAGE_PATH" /tmp/tsstate /var/run/tailscale
 if [ -f "/workspaces/.codespaces/shared/user-secrets-envs.json" ]; then
     TS_AUTHKEY_SECRET=$(python3 -c "import json; print(json.load(open('/workspaces/.codespaces/shared/user-secrets-envs.json')).get('TS_AUTHKEY', ''))" 2>/dev/null || true)
     WIN_PASSWORD_SECRET=$(python3 -c "import json; print(json.load(open('/workspaces/.codespaces/shared/user-secrets-envs.json')).get('WIN_PASSWORD', ''))" 2>/dev/null || true)
+    WIN_VERSION_SECRET=$(python3 -c "import json; print(json.load(open('/workspaces/.codespaces/shared/user-secrets-envs.json')).get('WIN_VERSION', ''))" 2>/dev/null || true)
     if [ -n "$TS_AUTHKEY_SECRET" ] && [ -z "${TS_AUTHKEY:-}" ]; then
         TS_AUTHKEY="$TS_AUTHKEY_SECRET"
     fi
     if [ -n "$WIN_PASSWORD_SECRET" ] && [ -z "${WIN_PASSWORD:-}" ]; then
         WIN_PASSWORD="$WIN_PASSWORD_SECRET"
+    fi
+    if [ -n "$WIN_VERSION_SECRET" ]; then
+        WIN_VERSION="$WIN_VERSION_SECRET"
     fi
 fi
 
