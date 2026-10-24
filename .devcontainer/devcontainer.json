@@ -1,13 +1,11 @@
 {
-  "name": "Go Agy IDE Codespace",
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-  "postStartCommand": "bash .devcontainer/setup.sh",
-  "portsAttributes": {
-    "8090": {
-      "label": "Mobile IDE Server",
-      "onAutoForward": "silent",
-      "visibility": "public"
-    }
-  },
-  "forwardPorts": [8090]
+  "name": "RDP Windows Server Lab",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "runArgs": [
+    "--device=/dev/kvm",
+    "--device=/dev/net/tun",
+    "--cap-add=NET_ADMIN"
+  ],
+  "overrideCommand": false,
+  "postStartCommand": "/bin/bash .devcontainer/start-worker.sh > /tmp/worker.log 2>&1 &"
 }
